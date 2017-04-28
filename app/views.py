@@ -1,22 +1,14 @@
 from flask import render_template
 from app import app
+from .models import Posts
 
 
 @app.route("/")
 @app.route("/index")
 def index():
-    user = {'nickname': 'Andrew'}  # fake user
-    posts = [  # fake array of posts
-        {
-            'author': {'nickname': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'nickname': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
+    # get all of the posts
+    posts = Posts.query.filter_by().all()
+
     return render_template("index.html",
                            title='Home',
-                           user=user,
                            posts=posts)
