@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS public.posts;
-
 BEGIN;
+
+DROP TABLE IF EXISTS public.posts;
 
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
@@ -16,7 +16,6 @@ CREATE TABLE posts (
     CONSTRAINT likes CHECK ((likes >= 0))
 );
 
-COMMIT;
 
 
 INSERT INTO public.posts (
@@ -25,11 +24,13 @@ INSERT INTO public.posts (
     published_at
 ) 
 VALUES 
-    (
-        1, 'test post', now(), now(), 
-        'test', 'test', 1, false, now()
-    ),
-	(  
-        1, 'test second post', now(), now(), 
-        'again', 'test', 1, false, now()
-    );
+(
+    1, 'test post', now(), now(), 
+    'test', 'test', 1, false, now()
+),
+(  
+    1, 'test second post', now(), now(), 
+    'again', 'test', 1, false, now()
+);
+
+COMMIT;
