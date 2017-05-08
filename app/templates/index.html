@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
     {% for post in posts %}
-    <div><p>{{ post.title }} says: <b>{{ post.body }}</b></p></div>
+    <div>
+      <p>
+        <b>{{ post.title }}</b>: <br />
+        {{ post.body }} <br />
+        posted by {{ post.developer.first_name }} at {{ post.created_at }}
+      </p>
+    </div>
     {% endfor %}
 {% endblock %}

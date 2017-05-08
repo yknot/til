@@ -1,10 +1,8 @@
-BEGIN;
+DROP TABLE IF EXISTS public.post;
 
-DROP TABLE IF EXISTS public.posts;
-
-CREATE TABLE posts (
+CREATE TABLE post (
     id SERIAL PRIMARY KEY,
-    developer_id INTEGER NOT NULL,
+    developer_id INTEGER NOT NULL REFERENCES developer(developer_id),
     body TEXT NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -18,7 +16,7 @@ CREATE TABLE posts (
 
 
 
-INSERT INTO public.posts (
+INSERT INTO public.post (
    developer_id, body, created_at, 
     updated_at, title, slug, likes, tweeted, 
     published_at
@@ -26,11 +24,9 @@ INSERT INTO public.posts (
 VALUES 
 (
     1, 'test post', now(), now(), 
-    'test', 'test', 1, false, now()
+    'test', 'test', 0, false, now()
 ),
 (  
     1, 'test second post', now(), now(), 
-    'again', 'test', 1, false, now()
+    'again', 'test', 0, false, now()
 );
-
-COMMIT;

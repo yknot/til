@@ -1,8 +1,6 @@
-BEGIN;
+DROP TABLE IF EXISTS public.developer;
 
-DROP TABLE IF EXISTS public.developers;
-
-CREATE TABLE developers (
+CREATE TABLE developer (
     developer_id SERIAL PRIMARY KEY,
     first_name character varying NOT NULL,
     last_name character varying NOT NULL
@@ -10,14 +8,11 @@ CREATE TABLE developers (
 );
 
 
-INSERT INTO public.developers (
+INSERT INTO public.developer (
 	first_name, last_name
 )
 VALUES
 (
 	'Andrew', 'Yale'
 );
-
-COMMIT;
-
 
